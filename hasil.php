@@ -1,3 +1,25 @@
+<?php
+$arr = array(0, 1, 2, 3, 4, 0, 5, 6, 4, 3, 2, 1, 0);
+
+
+
+echo $min = getMin($arr);
+
+// $count = count($arr);
+
+// while (count(array_unique($arr)) > 1) {
+
+//     for ($i = 0; $i < $count; $i++) {
+//         if ($arr[$i] >= $min) {
+//             $arr[$i] -= $min;
+//             echo $arr[$i] .
+//                 " ";
+//         }
+//     }
+//     echo "\n";
+// }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +41,12 @@
                 return $key;
         }
         return false;
+    }
+
+    function getMin($a)
+    {
+        $arr_filtered = array_values(array_filter($a));
+        return min($arr_filtered);
     }
 
 
@@ -56,8 +84,8 @@
         }
 
         // input nilai s
-        for ($i = 2; $i < $total_bk + 4; $i++) {
-            $data[$i + 1][0] = $nilai_s[$it];
+        for ($i = $total_po + 1; $i < $total_bk + $total_po + 3; $i++) {
+            $data[$i][0] = $nilai_s[$it];
             $it++;
         }
 
@@ -81,7 +109,7 @@
         }
 
         // input nilai s1, s2 ....
-        for ($i = 3; $i < $total_bk + 3; $i++) {
+        for ($i = $total_po + 1; $i < $total_bk + $total_po + 1; $i++) {
             for ($j = 1; $j < $total_bk + 1; $j++) {
                 if ($j + 2 == $i) {
                     $data[$i][$j] = 1;
@@ -127,8 +155,8 @@
                         $data[$total_bk + $total_po + 2][$i] = $index[$i];
                     }
 
-                    $min2 = min($index);
-                    $keyRow =  array_search($min2, $data[7]);
+                    $min2 = getMin($index);
+                    $keyRow =  array_search($min2, $data[$total_po + $total_bk + 2]);
 
                     $nilai_kunci_m = $data[$keyCol][$keyRow];
 
