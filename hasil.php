@@ -1,25 +1,3 @@
-<?php
-$arr = array(0, 1, 2, 3, 4, 0, 5, 6, 4, 3, 2, 1, 0);
-
-
-
-echo $min = getMin($arr);
-
-// $count = count($arr);
-
-// while (count(array_unique($arr)) > 1) {
-
-//     for ($i = 0; $i < $count; $i++) {
-//         if ($arr[$i] >= $min) {
-//             $arr[$i] -= $min;
-//             echo $arr[$i] .
-//                 " ";
-//         }
-//     }
-//     echo "\n";
-// }
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -140,8 +118,7 @@ echo $min = getMin($arr);
                         $nilai_var_baris_z[$i - 1] = $data[$i][0];
                     }
 
-                    if (min($nilai_var_baris_z) < 0) {
-                    } else {
+                    if (min($nilai_var_baris_z) >= 0) {
                         $is_loop = false;
                     }
 
