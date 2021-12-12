@@ -29,7 +29,7 @@
         $n_nilai_z = [];
         $nilai_var = [];
         $it = 0;
-        $data = [$total_bk + 1];
+        $data[$total_bk + 1] = array();
         $nilai_s = [];
         $index = [];
         $nilai_kunci_m = 0;
@@ -44,11 +44,16 @@
 
 
         // inisialisai nilai s
-        $nilai_s = [0, 0, 0, 0, 0];
+        for ($i = 0; $i < $total_bk + 2; $i++) {
+            $nilai_s[$i] = 0;
+        }
 
 
         // input kolom z di array data
-        $data[0] = [1, 0, 0, 0];
+        $data[0][0] = 1;
+        for ($i = 1; $i <= $total_bk + 1; $i++) {
+            $data[0][$i] = 0;
+        }
 
         // input nilai s
         for ($i = 2; $i < $total_bk + 4; $i++) {
@@ -58,8 +63,8 @@
 
         $i = 0;
         foreach ($_POST['nilai_z'] as $z) {
-            $n_nilai_z[$i] = 0 - $z;
-            $data[$i + 1][0] = 0 - $z;
+            $n_nilai_z[$i] = -1 * $z;
+            $data[$i + 1][0] = -1 * $z;
             $i++;
         }
 
@@ -94,7 +99,6 @@
 
             $j++;
         }
-
 
 
         while ($is_loop) {
@@ -184,19 +188,23 @@
 
                         </tbody>
                     </table>
-                    <p style="color: red;">
-                        Nilai kunci = <?= $nilai_kunci_m; ?>
-                    </p>
-                    <p style="color: blue;">
-                        Nilai S<?= $keyRow; ?> menjadi <?= $char[$keyCol - 1] ?> =
-                        <?php
-                        foreach ($nilai_s_berubah as $s) {
-                            echo $s . ' ';
-                        }
-                        ?>
-                    </p>
                     <?php
-                    if ($is_loop == false) {
+                    if ($is_loop == true) {
+                    ?>
+                        <p style="color: red;">
+                            Nilai kunci = <?= $nilai_kunci_m; ?>
+                        </p>
+                        <p style="color: blue;">
+                            Nilai S<?= $keyRow; ?> menjadi <?= $char[$keyCol - 1] ?> =
+                            <?php
+                            foreach ($nilai_s_berubah as $s) {
+                                echo $s . ' ';
+                            }
+                            ?>
+                        </p>
+                    <?php
+                    } else {
+
                         echo '<b><p style="color:#9e35e8;">Nilai Maksimum = ' . $data[$total_bk + $total_po + 1][0] . '</p></b>';
                     }
                     ?>
