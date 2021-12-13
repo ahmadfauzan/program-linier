@@ -128,8 +128,13 @@
 
                     // index
                     for ($i = 1; $i < $total_bk + 1; $i++) {
-                        $index[$i] = $data[$total_bk + $total_po + 1][$i] / $data[$keyCol][$i];
-                        $data[$total_bk + $total_po + 2][$i] = $index[$i];
+                        if ($data[$keyCol][$i] != 0) {
+                            $index[$i] = $data[$total_bk + $total_po + 1][$i] / $data[$keyCol][$i];
+                            $data[$total_bk + $total_po + 2][$i] = $index[$i];
+                        } else {
+
+                            $data[$total_bk + $total_po + 2][$i] = 0;
+                        }
                     }
 
                     $min2 = getMin($index);
@@ -138,15 +143,18 @@
                     $nilai_kunci_m = $data[$keyCol][$keyRow];
 
                     // nilai s berubah
-                    $k = 0;
-                    for ($i = 1; $i < $total_bk + $total_po + 2; $i++) {
+                    if ($is_loop) {
 
-                        $nilai_s_berubah[$k] = $data[$i][$keyRow] / $nilai_kunci_m;
-                        $k++;
-                    }
+                        $k = 0;
+                        for ($i = 1; $i < $total_bk + $total_po + 2; $i++) {
 
-                    for ($i = 0; $i < $total_bk + 1; $i++) {
-                        $nilai_col_terpilih[$i] = $data[$keyCol][$i];
+                            $nilai_s_berubah[$k] = $data[$i][$keyRow] / $nilai_kunci_m;
+                            $k++;
+                        }
+
+                        for ($i = 0; $i < $total_bk + 1; $i++) {
+                            $nilai_col_terpilih[$i] = $data[$keyCol][$i];
+                        }
                     }
 
                     ?>

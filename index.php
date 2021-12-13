@@ -37,6 +37,8 @@
       </form>
     </div>
   </div>
+  <br>
+  <footer class="text-center"><a href="github.com/ahmadfauzan/program-linier">github.com/ahmadfauzan/program-linier</a></footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
