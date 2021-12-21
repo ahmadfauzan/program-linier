@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Program Linier</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
@@ -22,66 +22,68 @@ if (isset($_POST['submit'])) {
   <h2 class="text-center mt-4">Program Linier</h2>
 
 
-  <div class="card mx-auto mt-4 w-50 shadow">
-    <div class="card-body">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Bahan Baku</th>
-            <?php
-            $j = 1;
+  <div class="card mx-auto mt-4 col-xl-7 col-lg-10 col-md-12 shadow">
+    <div class="table-responsive">
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Bahan Baku</th>
+              <?php
+              $j = 1;
 
-            for ($i = 0; $i < $produk; $i++) {
-              echo '<th scope="col">Produk ' . $j . '</th>';
-              $j++;
-            }
-            ?>
-            <th scope="col">Kapasitas</th>
-          </tr>
-        </thead>
-        <tbody>
-          <form action="hasil.php" method="POST">
-            <input type="hidden" name="total_bk" value="<?= $bahan_baku ?>">
-            <input type="hidden" name="total_po" value="<?= $produk ?>">
-            <?php
+              for ($i = 0; $i < $produk; $i++) {
+                echo '<th scope="col">Produk ' . $j . '</th>';
+                $j++;
+              }
+              ?>
+              <th scope="col">Kapasitas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <form action="hasil.php" method="POST">
+              <input type="hidden" name="total_bk" value="<?= $bahan_baku ?>" required>
+              <input type="hidden" name="total_po" value="<?= $produk ?>" required>
+              <?php
 
-            $bk = 1;
-            $po = 1;
+              $bk = 1;
+              $po = 1;
 
-            for ($j = 0; $j < $bahan_baku; $j++) {
-              echo '
+              for ($j = 0; $j < $bahan_baku; $j++) {
+                echo '
                 <tr>
                     <th scope="row">' . $bk . '</th>';
 
-              for ($i = 0; $i < $produk; $i++) {
-                echo '<td><input type="number" name="nilai_var[' . $j . '][]"></td>';
-              }
-              echo '<td><input type="number" name="nilai_kunci[]"></td>';
-              $bk++;
-              echo '</tr>';
-            }
-            ?>
-            <tr>
-              <th>Biaya/Laba</th>
-              <?php
-              $bk = 1;
-              for ($i = 0; $i < $produk; $i++) {
-                echo '<td><input type="number" name="nilai_z[]"></td>';
-
+                for ($i = 0; $i < $produk; $i++) {
+                  echo '<td><input type="number" name="nilai_var[' . $j . '][]" required></td>';
+                }
+                echo '<td><input type="number" name="nilai_kunci[]" required></td>';
                 $bk++;
+                echo '</tr>';
               }
               ?>
-              <td>
-                <div class="d-grid gap-2">
-                  <button class="btn btn-primary" type="submit" name="submit">Submit</button>
-                </div>
+              <tr>
+                <th>Biaya/Laba</th>
+                <?php
+                $bk = 1;
+                for ($i = 0; $i < $produk; $i++) {
+                  echo '<td><input type="number" name="nilai_z[]" required></td>';
 
-              </td>
-            </tr>
-          </form>
-        </tbody>
-      </table>
+                  $bk++;
+                }
+                ?>
+                <td>
+                  <div class="d-grid">
+                    <button class="btn btn-primary" type="submit" name="submit">Submit</button>
+                  </div>
 
+                </td>
+              </tr>
+            </form>
+          </tbody>
+        </table>
+
+      </div>
     </div>
   </div>
   <br>
